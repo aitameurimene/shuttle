@@ -126,7 +126,11 @@ public class HttpServer {
                         long contentLength = end - start + 1;
                         cleanupAudioStream();
                         audioInputStream = new FileInputStream(file);
-                        audioInputStream.skip(start);
+                        long skippedBytes = audioInputStream.skip(start);
+                        if (skippedBytes != start) {
+                            Log.e(TAG, "Skipped only " + skippedBytes + " out of " + start + " bytes");
+                            return newFixedLengthResponse(Response.Status.INTERNAL_ERROR, "text/html", "Could not skip to the requested position");
+                        }
                         Response response = newFixedLengthResponse(Response.Status.PARTIAL_CONTENT, getMimeType(audioFileToServe), audioInputStream, contentLength);
                         response.addHeader("Content-Length", contentLength + "");
                         response.addHeader("Content-Range", "bytes " + start + "-" + end + "/" + fileLength);
