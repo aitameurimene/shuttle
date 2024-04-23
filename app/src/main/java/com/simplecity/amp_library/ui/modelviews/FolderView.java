@@ -175,8 +175,21 @@ public class FolderView extends BaseSelectableViewModel<FolderView.ViewHolder> {
             case FileType.FOLDER:
                 holder.overflow.setVisibility(View.VISIBLE);
                 holder.imageView.setImageDrawable(holder.folderDrawable);
-                holder.lineTwo.setText(StringUtils.makeSubfoldersLabel(holder.itemView.getContext(), ((FolderObject) baseFileObject).folderCount, ((FolderObject) baseFileObject).fileCount));
-                holder.lineThree.setVisibility(View.GONE);
+                if (baseFileObject instanceof FolderObject) {
+                    // Safe to cast since we've checked the instance type
+                    FolderObject folderObject = (FolderObject) baseFileObject;
+                    String subfoldersLabel = StringUtils.makeSubfoldersLabel(
+                        holder.itemView.getContext(),
+                        folderObject.folderCount,
+                        folderObject.fileCount
+                    );
+                    holder.lineTwo.setText(subfoldersLabel);
+                } else {
+                    // Handle the case where baseFileObject is not a FolderObject
+                    holder.lineTwo.setText("Not a folder");
+                }
+            
+                            holder.lineThree.setVisibility(View.GONE);
                 holder.lineOne.setText(baseFileObject.name);
                 break;
             case FileType.FILE:
@@ -337,11 +350,11 @@ public class FolderView extends BaseSelectableViewModel<FolderView.ViewHolder> {
     }
 
     @Override
-public boolean areContentsEqual(Object other) {
+    public boolean areContentsEqual(Object other) {
     return this == other ||
            (other != null &&
             getClass() == other.getClass() &&
             super.areContentsEqual(other) &&
             baseFileObject.equals(((FolderView) other).baseFileObject));
-}
+    }
 }
