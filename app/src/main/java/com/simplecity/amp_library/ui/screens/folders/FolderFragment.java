@@ -154,7 +154,9 @@ public class FolderFragment extends BaseFragment implements
     SettingsManager settingsManager;
 
     @Inject
-    AnalyticsManager analyticsManager;
+    public BaseFragment(AnalyticsManager analyticsManager) {
+        this.analyticsManager = analyticsManager;
+    }
 
     @Inject
     RingtoneManager ringtoneManager;
