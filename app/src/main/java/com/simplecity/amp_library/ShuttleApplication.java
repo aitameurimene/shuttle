@@ -218,9 +218,10 @@ public class ShuttleApplication extends DaggerApplication {
         try {
             return getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
         } catch (PackageManager.NameNotFoundException | NullPointerException ignored) {
-
-        }
+            Log.e("GetVersion", "Failed to get version name", e);
         return "unknown";
+        }
+       
     }
 
     public void setIsUpgraded(boolean isUpgraded) {
