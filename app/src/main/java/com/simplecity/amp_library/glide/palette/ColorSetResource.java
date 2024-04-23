@@ -22,6 +22,9 @@ public class ColorSetResource implements Resource<ColorSet> {
 
     @Override
     public void recycle() {
+        if (colorSet != null && colorSet.getBitmap() != null) {
+            colorSet.getBitmap().recycle();
+        }
 
     }
 }
