@@ -304,13 +304,16 @@ public class Equalizer {
      */
     public synchronized void update() {
         try {
-            for (Integer sessionId : mAudioSessions.keySet()) {
-                updateDsp(mAudioSessions.get(sessionId));
+            // Iterate over the entry set instead of the key set
+            for (Map.Entry<Integer, AudioSession> entry : mAudioSessions.entrySet()) {
+                AudioSession session = entry.getValue();
+                updateDsp(session);  // Assuming updateDsp requires an AudioSession object
             }
         } catch (NoSuchMethodError e) {
-            Crashlytics.log("No such method error thrown when updating equalizer.. " + e.getMessage());
+            Crashlytics.log("No such method error thrown when updating equalizer: " + e.getMessage());
         }
     }
+    
 
     private void updateDsp(EffectSet session) {
         final boolean globalEnabled = settingsManager.getEqualizerEnabled();
