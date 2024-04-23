@@ -175,8 +175,9 @@ public class HttpServer {
         }
     }
 
-    private final Map<String, String> MIME_TYPES = new HashMap<String, String>() {{
-        put("css", "text/css");
+    private final Map<String, String> MIME_TYPES = createMimeTypesMap();
+
+    private static Map<String, String> createMimeTypesMap() {        put("css", "text/css");
         put("htm", "text/html");
         put("html", "text/html");
         put("xml", "text/xml");
