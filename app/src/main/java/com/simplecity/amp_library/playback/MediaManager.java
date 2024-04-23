@@ -28,11 +28,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class MediaManager {
 
-    public interface Defs {
+    public enum Defs {
 
-        public static final int ADD_TO_PLAYLIST = 0;
-        public static final int PLAYLIST_SELECTED = 1;
-        public static final int NEW_PLAYLIST = 2;
+         ADD_TO_PLAYLIST,
+         PLAYLIST_SELECTED,
+         NEW_PLAYLIST 
     }
 
     private AnalyticsManager analyticsManager;
