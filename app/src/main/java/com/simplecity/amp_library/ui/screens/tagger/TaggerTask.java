@@ -169,7 +169,14 @@ public class TaggerTask extends AsyncTask<Object, Integer, Boolean> {
                 if (tempFiles != null && tempFiles.size() != 0) {
                     for (int j = tempFiles.size() - 1; j >= 0; j--) {
                         File file = tempFiles.get(j);
-                        file.delete();
+                        boolean isDeleted = file.delete();
+                        if (isDeleted) {
+                            System.out.println("Deleted: " + file.getName());
+                            tempFiles.remove(j);
+                        } else {
+                            System.out.println("Failed to delete: " + file.getName());
+                            // Optionally, add error handling or retry logic here
+                        }
                         tempFiles.remove(j);
                     }
                 }
