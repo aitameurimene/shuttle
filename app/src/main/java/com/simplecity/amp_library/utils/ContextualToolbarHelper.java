@@ -86,9 +86,9 @@ public class ContextualToolbarHelper<T> {
         if (isActive) {
             boolean success = addOrRemoveItem(selectableViewModel, item);
             callback.notifyItemChanged(selectableViewModel);
-            return success; // Return true or false based on the success of addOrRemoveItem
+            return success;
         }
-        return false; // Return false if not active
+        return false;
     }
 
     public boolean handleLongClick(SelectableViewModel selectableViewModel, T item) {
