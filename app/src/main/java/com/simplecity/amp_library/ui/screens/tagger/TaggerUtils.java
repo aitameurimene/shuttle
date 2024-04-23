@@ -168,30 +168,19 @@ public class TaggerUtils {
     }
 
     static void copyFile(File sourceFile, File destFile) throws IOException {
-        if (!destFile.getParentFile().exists()) {
-            destFile.getParentFile().mkdirs();
-        }
-
-        if (!destFile.exists()) {
-            destFile.createNewFile();
-        }
-
-        FileChannel source = null;
-        FileChannel destination = null;
-
-        try {
-            source = new FileInputStream(sourceFile).getChannel();
-            destination = new FileOutputStream(destFile).getChannel();
-            destination.transferFrom(source, 0, source.size());
-        } finally {
-            if (source != null) {
-                source.close();
-            }
-            if (destination != null) {
-                destination.close();
-            }
-        }
+    if (!destFile.getParentFile().exists()) {
+        destFile.getParentFile().mkdirs();
     }
+
+    if (!destFile.exists()) {
+        destFile.createNewFile();
+    }
+
+    try (FileChannel source = new FileInputStream(sourceFile).getChannel();
+         FileChannel destination = new FileOutputStream(destFile).getChannel()) {
+        destination.transferFrom(source, 0, source.size());
+    }
+}
 
     static void copyFile(File sourceFile, FileOutputStream outputStream) throws IOException {
 
