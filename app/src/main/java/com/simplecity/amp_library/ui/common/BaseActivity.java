@@ -144,7 +144,7 @@ public abstract class BaseActivity extends AestheticActivity implements
     }
 
     void bindService() {
-        if (!bindInFlight) {
+        if (bindInFlight == false) {
             bindInFlight = true;
             MusicServiceConnectionUtils.bindToService(
                     getLifecycle(),
