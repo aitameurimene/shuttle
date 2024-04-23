@@ -132,7 +132,8 @@
             android:name=".ui.screens.search.voice.VoiceSearchActivity"
             android:excludeFromRecents="true"
             android:exported="true"
-            android:theme="@style/TranslucentTheme">
+            android:theme="@style/TranslucentTheme"
+            android:permission="com.yourpackage.permission.ACCESS_MAIN_ACTIVITY">
             <intent-filter>
                 <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -143,7 +144,8 @@
             android:name=".ui.screens.shortcut.ShortcutTrampolineActivity"
             android:excludeFromRecents="true"
             android:exported="true"
-            android:theme="@style/TranslucentTheme">
+            android:theme="@style/TranslucentTheme"
+            android:permission="com.yourpackage.permission.ACCESS_MAIN_ACTIVITY">
             <intent-filter>
                 <action android:name="com.simplecity.amp_library.shortcuts.SHUFFLE"/>
             </intent-filter>
@@ -152,7 +154,9 @@
         <service
             android:name=".playback.MusicService"
             android:exported="true"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+                        android:permission="com.yourpackage.permission.ACCESS_MAIN_ACTIVITY">
+
             <intent-filter>
                 <action android:name="android.media.browse.MediaBrowserService"/>
             </intent-filter>
@@ -194,7 +198,8 @@
         <!-- Config Activity for medium Widget -->
         <activity
             android:name=".ui.widgets.WidgetConfigureActivityMedium"
-            android:theme="@style/WallpaperTheme">
+            android:theme="@style/WallpaperTheme"
+            android:permission="com.yourpackage.permission.ACCESS_MAIN_ACTIVITY">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
@@ -203,7 +208,9 @@
         <!-- Config Activity for extra large Widget -->
         <activity
             android:name=".ui.widgets.WidgetConfigureActivityExtraLarge"
-            android:theme="@style/WallpaperTheme">
+            android:theme="@style/WallpaperTheme"
+            android:permission="com.yourpackage.permission.ACCESS_MAIN_ACTIVITY">
+
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
@@ -225,7 +232,9 @@
         <!-- Config Activity for small Widget -->
         <activity
             android:name=".ui.widgets.WidgetConfigureActivitySmall"
-            android:theme="@style/WallpaperTheme">
+            android:theme="@style/WallpaperTheme"
+            android:permission="com.yourpackage.permission.ACCESS_MAIN_ACTIVITY">
+
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
@@ -247,7 +256,9 @@
         <!-- Config Activity for large Widget -->
         <activity
             android:name=".ui.widgets.WidgetConfigureActivityLarge"
-            android:theme="@style/WallpaperTheme">
+            android:theme="@style/WallpaperTheme"
+                        android:permission="com.yourpackage.permission.ACCESS_MAIN_ACTIVITY">
+
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
