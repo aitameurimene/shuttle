@@ -1244,6 +1244,7 @@ public class CustomCollapsingToolbarLayout extends FrameLayout {
                         offsetHelper.setTopAndBottomOffset(
                                 Math.round(-verticalOffset * lp.mParallaxMult));
                         break;
+                    default return 0;
                 }
             }
 
