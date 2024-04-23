@@ -305,7 +305,7 @@ public final class CustomCollapsingTextHelper {
                 return Typeface.create(family, Typeface.NORMAL);
             }
         } catch (Exception e) {
-            throw new RuntimeException("Unable to read font family typeface: " + resId);
+            throw new TypefaceReadException("Unable to read font family typeface: " + resId, e);
         } finally {
             a.recycle();
         }
