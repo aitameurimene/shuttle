@@ -259,11 +259,18 @@ public class EqualizerFragment extends BaseFragment implements
                     if (fromUser) {
                         //Determine which band changed
                         int seekbarId = seekBar.getId();
-                        int band = 0;
+                        int band = -1;
                         for (int i = 0; i < eqViewElementIds.length; i++) {
                             if (eqViewElementIds[i][1] == seekbarId) {
                                 band = i;
+                                break;
                             }
+                        }
+                        if (band != -1) {
+                             processBand(band);
+                        } else {
+                            
+                            showError("No matching band found for seekbarId: " + seekbarId);
                         }
 
                         if (eqPreset != eqCustomPresetPosition) {
