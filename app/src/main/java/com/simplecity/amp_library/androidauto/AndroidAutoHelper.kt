@@ -151,7 +151,7 @@ class MediaIdHelper(
         val mediaWrapper = parseMediaId(mediaId)
         when (mediaWrapper) {
             is MediaIdWrapper.Song -> {
-                getSongsForPredicate { if (mediaWrapper.albumId == null) true else it.albumId == mediaWrapper.albumId }
+                getSongsForPredicate { song -> mediaWrapper.albumId == null || song.albumId == mediaWrapper.albumId  }
                     .map { songs ->
                         songs
                             .sortedBy { song -> song.albumArtistName }
