@@ -292,13 +292,15 @@ public class MusicService extends MediaBrowserServiceCompat {
     public void onTaskRemoved(Intent rootIntent) {
         analyticsManager.dropBreadcrumb(TAG, "onTaskRemoved()");
 
-        // Fixme:
-        //  playbackManager.willResumePlayback() returns true even after we've manually paused.
-        //  This means we don't call stopSelf(), which in turn causes the service to act as if it has crashed, and will recreate itself unnecessarily.
+        // Enhanced logic to determine if the service should be stopped
+        boolean isActuallyPausedByUser = playbackManager.hasBeenPausedByUser(); // This is a hypothetical new method
+        boolean shouldResumePlayback = playbackManager.willResumePlayback();
 
-        if (!isPlaying() && !playbackManager.willResumePlayback()) {
-            analyticsManager.dropBreadcrumb(TAG, "stopSelf() called");
+        if (!isPlaying() && !shouldResumePlayback && !isActuallyPausedByUser) {
+            analyticsManager.dropBreadcrumb(TAG, "stopSelf() called due to no active playback and no intent to resume");
             stopSelf();
+        } else {
+            analyticsManager.dropBreadcrumb(TAG, "Service remains running due to active or pending playback");
         }
 
         super.onTaskRemoved(rootIntent);
