@@ -172,7 +172,9 @@ public class MusicService extends MediaBrowserServiceCompat {
 
         notificationHelper = new MusicNotificationHelper(this, analyticsManager);
 
-        notificationStateHandler = new NotificationStateHandler(this);
+        static {
+            notificationStateHandler = new NotificationStateHandler(context);
+        }
 
         headsetManager.registerHeadsetPlugReceiver(this);
         bluetoothManager.registerBluetoothReceiver(this);
