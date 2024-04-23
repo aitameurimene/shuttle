@@ -63,7 +63,7 @@ public class MediaManager {
             setShuffleMode(QueueManager.ShuffleMode.OFF);
         }
 
-        if (songs.size() == 0
+        if (songs.isEmpty()
                 || MusicServiceConnectionUtils.serviceBinder == null
                 || MusicServiceConnectionUtils.serviceBinder.getService() == null) {
 
