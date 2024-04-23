@@ -23,6 +23,22 @@ public class FileObject extends BaseFileObject {
         }
         return StringUtils.makeTimeString(context, duration / 1000);
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;  // Check equality based on BaseFileObject's fields
+        FileObject that = (FileObject) o;
+        return duration == that.duration &&
+               Objects.equals(extension, that.extension) &&
+               Objects.equals(tagInfo, that.tagInfo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), extension, tagInfo, duration);
+    }
+
 
     @Override
     public String toString() {
@@ -31,4 +47,5 @@ public class FileObject extends BaseFileObject {
                 ", size='" + size + '\'' +
                 "} " + super.toString();
     }
+
 }
