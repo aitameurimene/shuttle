@@ -19,6 +19,9 @@ import android.graphics.Bitmap;
  */
 
 public class FastBlur {
+    private FastBlur() {
+        throw new UnsupportedOperationException("cette unite est privee");
+    }
 
     public static Bitmap blur(Bitmap sentBitmap, int radius, boolean canReuseInBitmap) {
 
