@@ -157,7 +157,7 @@ public class Song implements
 
     public int getPlayCount(Context context) {
 
-        int playCount = 0;
+        int localPlayCount = 0;
 
         Uri playCountUri = PlayCountTable.URI;
         Uri appendedUri = ContentUris.withAppendedId(playCountUri, id);
@@ -169,11 +169,11 @@ public class Song implements
                     .projection(new String[] { PlayCountTable.COLUMN_ID, PlayCountTable.COLUMN_PLAY_COUNT })
                     .build();
 
-            playCount = SqlUtils.createSingleQuery(context, cursor ->
+                    localPlayCount = SqlUtils.createSingleQuery(context, cursor ->
                     cursor.getInt(cursor.getColumnIndex(PlayCountTable.COLUMN_PLAY_COUNT)), 0, query);
         }
 
-        return playCount;
+        return localPlayCount;
     }
 
     public void setStartTime() {
@@ -302,7 +302,7 @@ public class Song implements
                 .lastPlayed(lastPlayed)
                 .dateAdded(dateAdded)
                 .path(path)
-                .songPlayCount(playCount)
+                .songPlayCount(localPlayCount)
                 .build();
     }
 
