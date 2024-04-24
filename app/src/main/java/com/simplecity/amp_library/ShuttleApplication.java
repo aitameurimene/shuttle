@@ -103,14 +103,10 @@ public class ShuttleApplication extends DaggerApplication {
         }
 
         if (BuildConfig.DEBUG) {
-            RxDogTag.install(); // Useful for tracking down crashes in beta
-            // enableStrictMode();
+            RxDogTag.install(); 
+            
         }
         
-
-        if (BuildConfig.DEBUG) {
-            // enableStrictMode();
-        }
 
         refWatcher = LeakCanary.install(this);
         // workaround to fix InputMethodManager leak as suggested by LeakCanary lib

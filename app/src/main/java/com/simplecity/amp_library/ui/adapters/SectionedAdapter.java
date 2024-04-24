@@ -12,7 +12,7 @@ public class CustomSectionedAdapter extends ViewModelAdapter implements FastScro
     @Override
     public String getSectionName(int position) {
 
-        ViewModel viewModel = items.get(position);
+        ViewModel<SectionedView> viewModel = items.get(position);
 
         if (viewModel instanceof SectionedView) {
             return ((SectionedView) viewModel).getSectionName();

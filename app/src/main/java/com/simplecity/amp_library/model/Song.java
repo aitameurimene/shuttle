@@ -69,6 +69,8 @@ public class Song implements
 
     private String artworkKey;
     private String sortKey;
+    public static final String ALBUM_ARTIST = "album_artist";
+
 
     public static String[] getProjection() {
         return new String[] {
@@ -85,7 +87,7 @@ public class Song implements
                 MediaStore.Audio.Media.DATE_ADDED,
                 MediaStore.Audio.Media.IS_PODCAST,
                 MediaStore.Audio.Media.BOOKMARK,
-                "album_artist"
+                ALBUM_ARTIST
         };
     }
 

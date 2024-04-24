@@ -417,7 +417,7 @@ class AlbumDetailFragment :
         }
 
         override fun onStartDrag(holder: SongView.ViewHolder) {
-
+            // Cette fonction est laissée vide car la gestion du début du glissement n'est pas nécessaire dans le contexte actuel.
         }
     }
 

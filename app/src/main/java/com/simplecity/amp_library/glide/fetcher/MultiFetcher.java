@@ -104,8 +104,7 @@ public class MultiFetcher implements DataFetcher<InputStream> {
             }
         }
 
-        if (inputStream == null) {
-            if (allowOfflineDownload
+        if (inputStream == null && allowOfflineDownload
                     || (settingsManager.canDownloadArtworkAutomatically()
                     && ShuttleUtils.isOnline(applicationContext, true))) {
 
